@@ -18,24 +18,33 @@ console.log(usersList);
 // Per selezionare un'utente utilizzo for loop
 // Utilizzo condizione if per controllare la lista
 
+let userAllowed = false;
+
 for (let i = 0; i < usersList.length; i++) {
-  let element;
-  const user = usersList[i];
-  console.log(user);
-  if (user != usersList) {
-    console.log("puoi accedere");
-    element = `<p>puoi accedere</p>`;
-  } else if (user == usersList) {
-    console.log("non puoi accedere");
-    element = `<p>Non puoi accedere</p>`;
+  const utente = userAllowed[i];
+
+  if (utente == userMail) {
+    userAllowed = true;
   }
+}
+
+console.log(userAllowed);
+
+const messaggio = document.querySelector(".messaggio");
+
+if (userAllowed) {
+  console.log("Benvenuto");
+  messaggio.innerHTML = "Benvenuto";
+} else {
+  console.log("Mi spiace, non puoi accedere");
+  messaggio.innerHTML = "Mi spiace, non puoi accedere";
 }
 
 const buttonControl = document.getElementById("control");
 const text = document.getElementById("text");
 
 buttonControl.addEventListener("click", function () {
-  console.log("Puoi accedere");
+  console.log(userAllowed);
 });
 
 /* Usiamo un input e un bottone per inserire la mail 
@@ -46,6 +55,15 @@ e poi mostriamo i risultati in pagina. */
  sia per il giocatore sia per il computer.
 Stabilire il vincitore, in base a chi fa il punteggio più alto. */
 
-for (let i = 1; i <= 6; i++) {
-  console.log(i);
+const playerNum = Math.floor(Math.random() * 6) + 1;
+const computerNum = Math.floor(Math.random() * 6) + 1;
+
+console.log(playerNum, computerNum);
+
+if (playerNum > computerNum) {
+  console.log(`Player vince! Player: ${playerNum} computer: ${computerNum}`);
+} else if (computerNum > playerNum) {
+  console.log(`Computer vince! Player: ${playerNum} computer: ${computerNum}`);
+} else {
+  console.log(`Gioca ancora! Player: ${playerNum} computer: ${computerNum}`);
 }
